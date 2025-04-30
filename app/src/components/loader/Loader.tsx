@@ -1,0 +1,183 @@
+
+import React from 'react';
+interface LoaderProps {
+  loaderType?: string;
+}
+
+const SkeletonCard = () => (
+  <div className="bg-white p-4 rounded-md shadow">
+    <div className="animate-pulse flex space-x-4">
+      <div className="rounded-md bg-gray-200 h-16 w-16"></div>
+      <div className="flex-1 space-y-2 py-1">
+        <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+        <div className="space-y-2">
+          <div className="h-3 bg-gray-200 rounded"></div>
+          <div className="h-3 bg-gray-200 rounded w-5/6"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const ColumnSkeleton = () => {
+  return (
+    <div className="space-y-6">
+      <div className="h-4 bg-gray-200 rounded-md w-3/6"></div>
+      <div className="h-4 bg-gray-200 rounded-md w-3/6"></div>
+      <div className="h-4 bg-gray-200 rounded-md w-3/6"></div>
+      <div className="h-4 bg-gray-200 rounded-md w-3/6"></div>
+      <div className="h-4 bg-gray-200 rounded-md w-3/6"></div>
+      <div className="h-4 bg-gray-200 rounded-md w-3/6"></div>
+      <div className="h-4 bg-gray-200 rounded-md w-3/6"></div>
+      <div className="h-4 bg-gray-200 rounded-md w-3/6"></div>
+    </div>
+  );
+};
+
+export const Loader: React.FC<LoaderProps> = ({ loaderType }) => {
+  return (
+    <>
+
+      {loaderType === 'shimmerSkeleton' && <div className="w-full p-2 space-y-8" key={'loader1'}>
+        {[1, 2].map((item, index) => (
+          <div key={index} className="w-full">
+            {/* Skeleton item with shimmer effect */}
+            <div className="relative overflow-hidden">
+              {/* Shimmer overlay */}
+              <div className="absolute inset-0 -translate-x-full z-10 animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
+              {/* Content skeleton */}
+              <div className="mb-1">
+                <div className="h-4 bg-gray-200 rounded-md w-3/4 mb-3"></div>
+                <div className="h-3 bg-gray-200 rounded-md w-full mb-2"></div>
+                <div className="h-3 bg-gray-200 rounded-md w-full mb-2"></div>
+                <div className="h-3 bg-gray-200 rounded-md w-full mb-2"></div>
+                <div className="h-3 bg-gray-200 rounded-md w-4/5"></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>}
+
+      {loaderType === 'cardLoader' && <div key={'loader2'} className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-2 w-full max-w-7xl px-2">
+        {[...Array(9)].map((x, idx) => (
+          <div
+            key={idx}
+            className="bg-white rounded-[10px] p-1 transition duration-300"
+          >
+            <div className="bg-gray-200 h-16 w-full rounded-md mb-3"></div>
+            <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
+            <div className="h-3 bg-gray-200 rounded w-full mb-1"></div>
+            <div className="h-3 bg-gray-200 rounded w-full"></div>
+          </div>
+        ))}
+      </div>}
+
+      {loaderType === 'hoverLoader' && <div className="w-full p-4 space-y-8" key={'loader3'}>
+        {/* First card */}
+        <div className="w-full">
+          <div className="h-6 bg-gray-200 rounded-md w-3/4 mb-4 animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded-md w-full mb-2 animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded-md w-full mb-2 animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded-md w-full mb-2 animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded-md w-4/5 animate-pulse"></div>
+        </div>
+
+        {/* Second card */}
+        <div className="w-full">
+          <div className="h-6 bg-gray-200 rounded-md w-3/4 mb-4 animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded-md w-full mb-2 animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded-md w-full mb-2 animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded-md w-full mb-2 animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded-md w-4/5 animate-pulse"></div>
+        </div>
+
+        {/* Third card */}
+        <div className="w-full">
+          <div className="h-6 bg-gray-200 rounded-md w-3/4 mb-4 animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded-md w-full mb-2 animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded-md w-full mb-2 animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded-md w-full mb-2 animate-pulse"></div>
+          <div className="h-3 bg-gray-200 rounded-md w-4/5 animate-pulse"></div>
+        </div>
+      </div>}
+
+      {loaderType === 'cardSkeletonLoader' && <div className="max-w-2xl mx-auto" key={'loader4'}>
+        {[...Array(3)].map((_, i) => (
+          <div
+            key={i}
+            className="bg-white rounded-lg shadow-md p-4 flex items-start gap-4"
+          >
+            {/* Left square placeholder */}
+            <div className="w-24 h-24 bg-gray-200 rounded-md flex-shrink-0"></div>
+
+            {/* Right content area */}
+            <div className="flex-1 space-y-2">
+              {/* Title placeholder */}
+              <div className="h-5 bg-gray-200 rounded w-1/3 mb-1"></div>
+
+              {/* Long text placeholder */}
+              <div className="h-3 bg-gray-200 rounded w-full"></div>
+
+              {/* Medium text placeholder */}
+              <div className="h-3 bg-gray-200 rounded w-3/4"></div>
+
+              {/* Short text placeholder */}
+              <div className="h-3 bg-gray-200 rounded w-2/3"></div>
+            </div>
+          </div>
+        ))}
+
+      </div>}
+
+      {loaderType === 'blockSkeleton' && <div className="max-w-md mx-auto p-4" key={'loader5'}>
+        <div className="space-y-4">
+          {/* Larger rectangular block with pulse animation */}
+          <div className="h-36 bg-gray-200 rounded-md w-full animate-pulse"></div>
+
+          {/* Four equal-sized lines with pulse animation */}
+          <div className="h-4 bg-gray-200 rounded-md w-full animate-pulse"></div>
+          <div className="h-4 bg-gray-200 rounded-md w-full animate-pulse"></div>
+          <div className="h-4 bg-gray-200 rounded-md w-full animate-pulse"></div>
+          <div className="h-4 bg-gray-200 rounded-md w-full animate-pulse"></div>
+        </div>
+      </div>}
+      {loaderType === 'wideBanner' && <div className="w-full max-w-5xl mx-auto p-4" key={'loader6'}>
+        {[1, 2, 3].map((item, idx) => (
+          <div className="space-y-3" key={idx}>
+            {/* Wide top banner with pulse animation */}
+            <div className="h-10 bg-gray-200 rounded w-full mb-4 animate-pulse"></div>
+
+            {/* Four equal-sized lines with pulse animation */}
+            <div className="h-3 bg-gray-200 rounded w-full animate-pulse mb-1"></div>
+            <div className="h-3 bg-gray-200 rounded w-full animate-pulse mb-1"></div>
+            <div className="h-3 bg-gray-200 rounded w-full animate-pulse mb-1"></div>
+            <div className="h-3 bg-gray-200 rounded w-full animate-pulse mb-5"></div>
+          </div>
+        ))}
+
+      </div>}
+
+      {loaderType === 'skeltonCards' && <div className="flex flex-col gap-10 mt-5" key={'loader7'}>
+        <div className="min-h-screen p-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[...Array(8)].map((_, i) => (
+                <SkeletonCard key={i} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>}
+
+      {loaderType === 'textTableSkeleton' && <div className="w-full animate-pulse" key={'loader8'}>
+        <div className="grid grid-cols-6 gap-4">
+          {[1, 2, 3, 4, 5, 6].map((item, i) => (
+            <ColumnSkeleton key={i}></ColumnSkeleton>
+          ))}
+
+        </div>
+      </div>}
+    </>
+  );
+};

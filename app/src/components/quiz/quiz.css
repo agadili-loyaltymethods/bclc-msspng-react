@@ -1,0 +1,8 @@
+
+.box-shadow-none {
+  box-shadow: none !important;
+}
+
+.border-gray {
+  border: 0.5px solid gray !important;
+}
