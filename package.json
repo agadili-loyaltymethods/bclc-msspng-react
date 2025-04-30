@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node app.js",
+    "start": "concurrently \"npm run start-server\" \"npm run start-client\"",
     "start-local": "concurrently \"npm run start-server\" \"npm run start-client\"",
     "start-server": "nodemon app.js",
     "start-client": "cd app && npm run dev",
